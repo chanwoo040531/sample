@@ -48,8 +48,8 @@ async function showArticleDetail(id) {
     document.getElementById('editForm').classList.add('hidden');
     document.getElementById('detailTitle').textContent = article.title;
     document.getElementById('detailContent').textContent = article.content;
-    document.getElementById('detailCreatedAt').textContent = `생성일: ${article.createdAt}`;
-    document.getElementById('detailLastUpdatedAt').textContent = `수정일: ${article.lastUpdatedAt}`;
+    document.getElementById('detailCreatedAt').textContent = `생성일: ${formatTimeAgo(new Date(article.createdAt))}`;
+    document.getElementById('detailLastUpdatedAt').textContent = `수정일: ${formatTimeAgo(new Date(article.lastUpdatedAt))}`;
     document.getElementById('editButton').onclick = () => showEditForm(article);
     document.getElementById('deleteButton').onclick = () => deleteArticle(article.id);
 }
@@ -99,6 +99,26 @@ async function deleteArticle(id) {
         document.getElementById('articleDetail').classList.add('hidden');
     } else {
         alert('게시글 삭제에 실패했습니다.');
+    }
+}
+
+function formatTimeAgo(date) {
+    const now = new Date();
+    const diffInSeconds = Math.floor((now - date) / 1000);
+
+    const seconds = diffInSeconds;
+    const minutes = Math.floor(diffInSeconds / 60);
+    const hours = Math.floor(diffInSeconds / 3600);
+    const days = Math.floor(diffInSeconds / 86400);
+
+    if (days >= 1) {
+        return date.getFullYear() + '년 ' + (date.getMonth() + 1).toString().padStart(2, '0') + '월 ' + date.getDate().toString().padStart(2, '0') + '일';
+    } else if (hours >= 1) {
+        return hours + '시간 전';
+    } else if (minutes >= 1) {
+        return minutes + '분 전';
+    } else {
+        return seconds + '초 전';
     }
 }
 
