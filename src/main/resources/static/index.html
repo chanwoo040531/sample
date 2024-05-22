@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>게시글 관리</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app">
+    <header>
+        <h1>게시글 관리</h1>
+    </header>
+
+    <main>
+        <section id="createSection">
+            <form id="createForm">
+                <h2>게시글 생성</h2>
+                <input type="text" id="title" placeholder="제목" required>
+                <textarea id="content" placeholder="내용" required></textarea>
+                <button type="submit">생성</button>
+            </form>
+        </section>
+
+        <section id="articles">
+            <h2>게시글 목록</h2>
+            <ul id="articleList"></ul>
+        </section>
+
+        <section id="articleDetail" class="hidden">
+            <h2>게시글 상세</h2>
+            <h3 id="detailTitle"></h3>
+            <p id="detailContent"></p>
+            <p id="detailCreatedAt"></p>
+            <p id="detailLastUpdatedAt"></p>
+            <div class="button-group">
+                <button id="editButton" class="edit">수정</button>
+                <button id="deleteButton" class="delete">삭제</button>
+            </div>
+        </section>
+
+        <section id="editForm" class="hidden">
+            <h2>게시글 수정</h2>
+            <input type="text" id="editTitle" required>
+            <textarea id="editContent" required></textarea>
+            <div class="button-group">
+                <button id="updateButton" class="edit">수정</button>
+                <button id="cancelButton" class="cancel">취소</button>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
