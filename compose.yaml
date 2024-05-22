@@ -8,3 +8,6 @@ services:
       - 'MYSQL_USER=myuser'
     ports:
       - '4306:3306'
+
+    volumes:
+      - './var/lib/mysql:/var/lib/mysql'
